@@ -10,7 +10,7 @@
 	</parent>
 	
 	<artifactId>ShopwaFrontEnd</artifactId>
-	<name>ShopmeFrontEnd</name>
+	<name>ShopwaFrontEnd</name>
 	<description>Shopwa application</description>
 
 	<properties>
@@ -110,7 +110,6 @@
 			<artifactId>webjars-locator-core</artifactId>
 		</dependency>
 
-
 	</dependencies>
 
 	<build>
@@ -118,15 +117,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/*.java</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
