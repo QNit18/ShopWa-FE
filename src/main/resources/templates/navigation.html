@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<div th:fragment="header_menu" style="font-size: 18px;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9fede8;">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{${S3_BASE_URI + SITE_LOGO}}" style="width:100px; hight:100px"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar, #searchNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="topNavbar">
+            <ul class="navbar-nav mr-auto">
+                <!-- Start of Dynamic Header Menu Items -->
+                <th:block th:each="headerMenu : ${headerMenuItems}">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{'/m/' + ${headerMenu.alias}}">[[${headerMenu.title}]]</a>
+                    </li>
+                </th:block>
+            </ul>
+            <form class="form-inline" th:action="@{/search}" method="get">
+                <input type="search" name="keyword" class="form-control mr-sm-2"
+                       th:value="${keyword}"
+                       placeholder="Search" required/>
+            </form>
+
+            <th:block sec:authorize="!isAuthenticated()">
+                <a class="btn btn-primary" th:href="@{/login}">Login</a>
+            </th:block>
+            <th:block sec:authorize="isAuthenticated()">
+                <a class="nav-link" th:href="@{/cart}"><i class="fa-solid fa-cart-shopping fa-2x " style="color:#ff2121"></i></a>
+            </th:block>
+
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="search_nav" class="row">
+    <div class="col-md">
+
+        <th:block sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+                <input type="submit" value="Logout"/>
+            </form>
+
+            <nav class="navbar navbar-expand-sm bg-light navbar-light border-bottom shadow-sm">
+                <div class="collapse navbar-collapse" id="searchNavbar">
+<!--                    <form class="form-inline" th:action="@{/search}" method="get">-->
+<!--                        <input type="search" name="keyword" class="form-control mr-sm-2"-->
+<!--                        th:value="${keyword}"-->
+<!--                        placeholder="keyword" required/>-->
+<!--                    </form>-->
+                    <ul class="navbar-nav ml-auto">
+                        <th:block sec:authorize="isAuthenticated()">
+                            <li class="nav-item ml-auto">
+                                <b><a class="nav-link" th:href="@{/account_details}"
+                                      sec:authentication="principal.fullName"></a></b>
+                            </li>
+
+                            <li class="nav-item ml-auto">
+                                <a class="nav-link" th:href="@{/address_book}">Address</a>
+                            </li>
+
+                            <li class="nav-item ml-auto">
+                                <a class="nav-link" th:href="@{/customer/questions}">Question</a>
+                            </li>
+
+                            <li class="nav-item ml-auto">
+                                <a class="nav-link" th:href="@{/reviews}">Reviews</a>
+                            </li>
+
+                            <li class="nav-item ml-auto">
+                                <a class="nav-link" th:href="@{/orders}">Orders</a>
+                            </li>
+                            <li class="nav-item ml-auto">
+                                <a class="nav-link" href="javascript: document.logoutForm.submit()">Logout</a>
+                            </li>
+                        </th:block>
+                    </ul>
+                </div>
+            </nav>
+        </th:block>
+
+    </div>
+</div>
+<div th:fragment="footer_menu">
+    <div>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bottomNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="bottomNavbar">
+                <ul class="navbar-nav">
+                    <th:block th:each="footerMenu : ${footerMenuItems}">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{'/m/' + ${footerMenu.alias}}">[[${footerMenu.title}]]</a>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div th:fragment="footer" class="text-center m-3">
+        <p>[[${COPYRIGHT}]]</p>
+    </div>
+</div>
+
+</body>
+</html>

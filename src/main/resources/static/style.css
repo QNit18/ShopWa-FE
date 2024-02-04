@@ -1,0 +1,61 @@
+*.icon-white {color: white}
+*.icon-silver {color: silver}
+*.icon-green {color: green}
+*.icon-dark {color: gray}
+
+@media screen and (max-width: 820px) {
+    /* small screen */
+    div.full-details { display: none }
+    div.less-details { display: block; }
+}
+
+@media screen and (min-width: 820px) and (max-width: 1180px) {
+    /* medium screen */
+    div.full-details { display: block; }
+    div.less-details { display: none; }
+    .hideable-column { display: none }
+}
+
+@media screen and (min-width: 1180px) {
+    /* small screen */
+    div.less-details { display: none; }
+    .hideable-column { display: table-cell; }
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: black;
+    transition: transform 0.3s, color 0.3s, font-size 0.3s; /* Tạo hiệu ứng mượt mà */
+    display: inline-block; /* Để transform hoạt động đúng */
+    backface-visibility: hidden; /* Giảm hiệu ứng chữ mờ khi scale */
+}
+
+/* Khi di chuột qua, chữ sẽ lớn hơn và màu chữ thành xanh */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #ff369a;
+    transform: scale(1.1); /* Tăng kích thước chữ 110% so với kích thước ban đầu */
+}
+
+/* Màu chữ mặc định và kích thước */
+.dropdown-menu .dropdown-item {
+    color: black;
+    font-weight: normal; /* Font chữ bình thường */
+    transition: font-size 0.3s, color 0.3s, font-weight 0.3s; /* Tạo hiệu ứng chuyển đổi màu, kích thước và độ đậm mượt mà */
+    display: inline-block;
+}
+
+/* Khi di chuột qua, màu chữ thành màu mới, kích thước tăng lên và làm đậm */
+.dropdown-menu .dropdown-item:hover {
+    color: #ff369a;
+    font-size: 110%; /* Thay đổi kích thước chữ khi di chuột qua */
+}
+
+.border {
+    border: 2px solid #ccc; /* Đường viền 2px màu xám */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    border-radius: 10px;
+}
+
+.form-group.select-upwards .col-sm-10 select {
+    bottom: 100%;
+    position: relative;
+}
