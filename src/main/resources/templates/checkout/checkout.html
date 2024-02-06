@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: page_head('Shopping Cart', 'none')">
+<head th:replace="~{fragments :: page_head('Shopping Cart', 'none')}">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
           integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous"/>
@@ -59,9 +59,9 @@
 </style>
 <body>
 <div>
-    <div th:replace="navigation :: header_menu"></div>
+    <div th:replace="~{navigation :: header_menu}"></div>
     <div class="container-fluid">
-        <div th:replace="navigation :: search_nav"></div>
+        <div th:replace="~{navigation :: search_nav}"></div>
         <div class="text-center m-3">
             <h2>Checkout</h2>
         </div>
@@ -122,12 +122,12 @@
                                             <a th:href="@{'/p/' + ${product.alias}}" target="_blank">[[${product.shortName}]]</a>
                                             <br/>
                                             <small>Ship:
-                                                <div th:replace="fragments :: format_currency(${item.shippingCost})"></div>
+                                                <div th:replace="~{fragments :: format_currency(${item.shippingCost})}"></div>
                                             </small>
                                             <small class="ml-3">Quantity: [[${item.quantity}]]</small>
                                         </td>
                                         <td>
-                                            <div th:replace="fragments :: format_currency(${item.subtotal})"></div>
+                                            <div th:replace="~{fragments :: format_currency(${item.subtotal})}"></div>
                                         </td>
                                     </tr>
                                 </th:block>
@@ -141,20 +141,20 @@
                         <div class="row mt-2">
                             <div class="col">Product Total:</div>
                             <div class="col">
-                                <div th:replace="fragments :: format_currency(${checkoutInfo.productTotal})"></div>
+                                <div th:replace="~{fragments :: format_currency(${checkoutInfo.productTotal})}"></div>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col">Shipping Cost:</div>
                             <div class="col">
-                                <div th:replace="fragments :: format_currency(${checkoutInfo.shippingCostTotal})"></div>
+                                <div th:replace="~{fragments :: format_currency(${checkoutInfo.shippingCostTotal})}"></div>
                             </div>
                         </div>
                         <div class="row mt-2">
 
                             <div class="col"><b>Payment Total: </b></div>
                             <div class="col"><b>
-                                <div th:replace="fragments :: format_currency(${checkoutInfo.paymentTotal})"></div>
+                                <div th:replace="~{fragments :: format_currency(${checkoutInfo.paymentTotal})}"></div>
                             </b></div>
                         </div>
                     </div>
@@ -163,8 +163,8 @@
         </div>
     </div>
 
-    <div th:replace="fragments :: modal_dialog"></div>
-    <div th:replace="navigation :: footer_menu"></div>
+    <div th:replace="~{fragments :: modal_dialog}"></div>
+    <div th:replace="~{navigation :: footer_menu}"></div>
 </div>
 <script type="text/javascript" th:src="@{/js/shopping_cart.js}"></script>
 <script type="text/javascript" th:src="@{/js/jquery.number.min.js}"></script>
