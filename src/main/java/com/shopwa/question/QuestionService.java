@@ -5,6 +5,7 @@ import com.shopwa.entity.Customer;
 import com.shopwa.entity.product.Product;
 import com.shopwa.exception.ProductNotFoundException;
 import com.shopwa.product.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class QuestionService {
 	public static final int QUESTIONS_PER_PAGE_FOR_PUBLIC_LISTING = 10;
 	public static final int QUESTIONS_PER_PAGE_FOR_CUSTOMER = 4;
