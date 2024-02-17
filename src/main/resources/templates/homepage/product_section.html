@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-	<div th:fragment="content" th:remove="tag" >
-		<div class="col-sm-2" th:each="productSection : ${section.productSections}" th:with="product = ${productSection.product}">
-			<div>
-				<a th:href="@{${product.URI}}" th:title="${product.name}">
-					<img th:src="@{${product.mainImagePath}}" height="100" />
-					<br/>
-					<b>[[${product.shortName}]]</b>
-				</a>
-			</div>
-			<div>
-				<table>
-					<tr>
-						<td><input type="text" class="kv-ltr-theme-svg-star rating-loading" dir="ltr" data-size="xs" th:value="${product.averageRating}" /></td>
-						<td><small>[[${product.reviewCount}]]</small></td>
-					</tr>
-				</table>
-			</div>
-			<div>
-				<div th:replace="product/product_fragment :: product_price"></div>
-			</div>					
-		</div>
-	</div>
+<div th:fragment="content" th:remove="tag">
+    <div class="col-sm-2" th:each="productSection : ${section.productSections}"
+         th:with="product = ${productSection.product}">
+        <a style="text-decoration: none; color: black" th:href="@{${product.URI}}" th:title="${product.name}">
+            <div class="card border-0 rounded-0 shadow mb-3">
+                <img th:src="@{${product.mainImagePath}}" height="200" width="100" class="card-img-top rounded-0"/>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-14">
+                            <h6 class="card-title"><b>[[${product.shortName}]]</b></h6>
+                            <p class="card-text">
+                                <span style="display: inline-block; vertical-align: top;">
+                                    <input type="text" class="kv-ltr-theme-svg-star rating-loading" dir="ltr"
+                                           data-size="xs" th:value="${product.averageRating}">
+                                </span>
+                                <span style="display: inline-block; vertical-align: top;">
+                                    <small>[[${product.reviewCount}]]</small>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-2" th:replace="product/product_fragment :: product_price"></div>
+            </div>
+        </a>
+    </div>
+</div>
 </body>
 </html>

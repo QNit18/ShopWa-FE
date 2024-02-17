@@ -6,6 +6,18 @@
     <script th:src="@{/star-rating/js/star-rating.js}" type="text/javascript"></script>
     <link rel="stylesheet" th:href="@{/star-rating/themes/krajee-svg/theme.css}" media="all" type="text/css"/>
     <script th:src="@{/star-rating/themes/krajee-svg/theme.js}" type="text/javascript"></script>
+    <style>
+        .card {
+            width: 18rem; /* Đảm bảo rằng .card có kích thước khởi đầu */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng transition */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Viền màu đỏ nhạt ban đầu */
+        }
+
+        .card:hover {
+            transform: scale(1.03); /* Kích thước tăng lên 107% khi lướt qua */
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); /* Viền màu đỏ tối khi hover */
+        }
+    </style>
 </head>
 <body>
 <div th:replace="navigation :: header_menu"></div>

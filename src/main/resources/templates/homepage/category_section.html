@@ -2,12 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div th:fragment="content" th:remove="tag">
-		<div class="col-sm-1" th:each="catSection : ${section.categorySections}" th:with="cat = ${catSection.category}">
-			<div><img th:src="@{${cat.imagePath}}" width="60" height="60"/></div>
-			<div>
+		<div class="col-sm-1 full-details" th:each="catSection : ${section.categorySections}" th:with="cat = ${catSection.category}">
+			<div  style="text-align: center;">
+				<img th:src="@{${cat.imagePath}}" width="60" height="60"/>
+			</div>
+			<div style="text-align: center;font-size: 15px">
 				<a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
 			</div>
-		</div>			
+		</div>
+
+		<div class="col-3 less-details" th:each="catSection : ${section.categorySections}" th:with="cat = ${catSection.category}">
+			<div  style="text-align: center;">
+				<img th:src="@{${cat.imagePath}}" width="60" height="60"/>
+			</div>
+			<div style="text-align: center;font-size: 12px">
+				<a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
